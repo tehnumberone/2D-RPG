@@ -28,6 +28,8 @@ namespace _2D_RPG
             return charactercreation;
         }
 
+        public decimal hp;
+
         private void button1_Click(object sender, EventArgs e)
         {
             Character.CharName = inputCharname.Text;
@@ -36,6 +38,18 @@ namespace _2D_RPG
             Game maingame = new Game();
             maingame.Show();
             character(1);
+            savestats();
+
+        }
+
+        public void savestats()
+        {
+            Character Human = new Character();
+            Human.Strength = Convert.ToInt32(statsStrength.Value);
+            Human.Attack = Convert.ToInt32(statsAttack.Value);
+            Human.Health = Convert.ToInt32(statsHealth.Value);
+            Human.Vitality = Convert.ToInt32(statsVitality.Value);
+            Human.Agility = Convert.ToInt32(statsAgility.Value);
         }
 
         private void inputRace_SelectedIndexChanged(object sender, EventArgs e)
@@ -44,16 +58,17 @@ namespace _2D_RPG
             if (inputRace.SelectedIndex == 0)//0 is Human
             {
                 Character Human = new Character();
-                statsStrength.Value = Human.Strength;
-                statsAttack.Value = Human.Attack;
-                statsHealth.Value = Human.Health + 3;
-                statsVitality.Value = Human.Vitality;
-                statsAgility.Value = Human.Agility;
+                Human.Strength = +Convert.ToInt32(statsStrength.Value);
+                Human.Attack = +Convert.ToInt32(statsAttack.Value);
+                Human.Health = +Convert.ToInt32(statsHealth.Value);
+                Human.Vitality = +Convert.ToInt32(statsVitality.Value);
+                Human.Agility = +Convert.ToInt32(statsAgility.Value);
             }
+        }
             if (inputRace.SelectedIndex == 1)//1 is Chicken
             {
                 Character Chicken = new Character();
-                statsStrength.Value = Chicken.Strength - 2;
+        statsStrength.Value = Chicken.Strength - 2;
                 statsAttack.Value = Chicken.Attack - 2;
                 statsHealth.Value = Chicken.Health - 2;
                 statsVitality.Value = Chicken.Vitality - 2;
@@ -62,7 +77,7 @@ namespace _2D_RPG
             if (inputRace.SelectedIndex == 2)//2 is Cow
             {
                 Character Cow = new Character();
-                statsStrength.Value = Cow.Strength + 1;
+    statsStrength.Value = Cow.Strength + 1;
                 statsAttack.Value = Cow.Attack + 1;
                 statsHealth.Value = Cow.Health + 1;
                 statsVitality.Value = Cow.Vitality + 1;
@@ -71,33 +86,33 @@ namespace _2D_RPG
 
         }
         public void checkcap(object sender, EventArgs e)
+{
+    NumericUpDown stat = (NumericUpDown)sender;
+    if (statsStrength.Value + statsHealth.Value + statsAttack.Value + statsAgility.Value + statsVitality.Value >= 30)//Max total stats is 30
+    {
+        if (stat.Name == "statsStrength")
         {
-            NumericUpDown stat = (NumericUpDown)sender;
-            if (statsStrength.Value + statsHealth.Value + statsAttack.Value + statsAgility.Value + statsVitality.Value >= 30)//Max total stats is 30
-            {
-                if (stat.Name == "statsStrength")
-                {
-                    statsStrength.Value--;
-                }
-                if (stat.Name == "statsHealth")
-                {
-                    statsHealth.Value--;
-                }
-                if (stat.Name == "statsAttack")
-                {
-                    statsAttack.Value--;
-                }
-                if (stat.Name == "statsAgility")
-                {
-                    statsAgility.Value--;
-                }
-                if (stat.Name == "statsVitality")
-                {
-                    statsVitality.Value--;
-                }
-                MessageBox.Show("Too high amigo!");
-            }
+            statsStrength.Value--;
         }
+        if (stat.Name == "statsHealth")
+        {
+            statsHealth.Value--;
+        }
+        if (stat.Name == "statsAttack")
+        {
+            statsAttack.Value--;
+        }
+        if (stat.Name == "statsAgility")
+        {
+            statsAgility.Value--;
+        }
+        if (stat.Name == "statsVitality")
+        {
+            statsVitality.Value--;
+        }
+        MessageBox.Show("Too high amigo!");
+    }
+}
     }
 
 

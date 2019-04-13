@@ -26,7 +26,7 @@ namespace _2D_RPG
 
         private void bgameLoad_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void bgameContinue_Click(object sender, EventArgs e)
