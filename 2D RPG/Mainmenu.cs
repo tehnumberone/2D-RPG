@@ -19,6 +19,7 @@ namespace _2D_RPG
 
         private void bgameNew_Click(object sender, EventArgs e)
         {
+            Visible = false;
             Charactercreation charscreen = new Charactercreation();
             charscreen.Show();
         }

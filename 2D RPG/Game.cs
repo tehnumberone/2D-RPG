@@ -12,9 +12,11 @@ namespace _2D_RPG
 {
     public partial class Game : Form
     {
+        Character NewChar = new Character();
         public Game()
         {
             InitializeComponent();
+            label1.Text= NewChar.Introduce(Character.CharName);
         }
     }
 }
